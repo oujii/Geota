@@ -1,0 +1,211 @@
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-input-placeholder {
+    color:    E1E1E1;
+}
+:-moz-placeholder {
+    color:    E1E1E1;
+}
+::-moz-placeholder {
+    color:    E1E1E1;
+}
+:-ms-input-placeholder {
+    color:    E1E1E1;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+textarea:focus, input:focus, button:focus {
+    outline: none;
+}
+
+html {
+    /*font: 11px system-ui;*/
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+
+    height: 100%;
+    width: 100%;
+}
+
+#mapContainer {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.messageParent {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100vw;
+    height: 90vh;
+    /*height: 35px;*/
+
+    background-color: #25272F;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+
+    color: #E1E1E1;
+    z-index: 800;
+    font-family: 'Roboto', sans-serif;
+    font-size: 4vh;
+    font-weight: 400;
+    /*font: 11px system-ui;*/
+}
+
+.messageHeadline {
+  padding: 6px;
+  width: 100vw;
+  border-bottom: 1px solid E1E1E1;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  min-height: 24px;
+}
+
+.messageFeed {
+  padding: 6px;
+  width: 100%;
+  overflow: scroll;
+  padding-top: 10px;
+}
+
+form {
+    margin: auto;
+    z-index: 900;
+    font-size: 4vh;
+    color: E1E1E1;
+}
+
+.formBox {
+    display: none;
+    margin: auto;
+    align-items: center;
+    align-content: center;
+}
+
+.loading {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    align-content: center;
+}
+
+input {
+    color: E1E1E1;
+}
+
+input[type="message"] {
+    border: 1px solid black;
+    background-color: #34495E;
+    padding: 6px;
+    height: 20vh;
+    width: 80vw;
+
+    top: 30px;
+
+}
+
+#messageField {
+    color: E1E1E1;
+}
+
+input[type="submit"] {
+    width: 100px;
+    border: 0px;
+    border-left: 1px solid E1E1E1;
+    line-height: 35px;
+    height: 20vh;
+    width: 20vw;
+    color: #E1E1E1;
+    background: #41CCB4;
+    text-transform: uppercase;
+    top: 30px;
+    left: 350px;
+    cursor: pointer;
+}
+
+.formBox {
+    position:fixed;
+    left:0px;
+   bottom:0px;
+   height:20vh;
+
+
+   background:#999;
+
+}
+
+#messageForm {
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+    z-index: 1000;
+    position: relative;
+    height: 56px;
+    width: 56px;
+    margin-bottom: -200px;
+    border: 0;
+    border-radius: 100%;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button.Primary {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 5vh;
+    display: none;
+    background: black;
+    color: E1E1E1;
+}
+
+.icon {
+  margin: auto;
+}
+
+@media (max-width: 450px) {
+  .messageParent {
+      width: 240px;
+  }
+
+  input[type="message"] {
+      width: 150px;
+  }
+
+  input[type="submit"] {
+      width: 90px;
+  }
+
+  .button {
+      margin-bottom: -130px;
+  }
+}
