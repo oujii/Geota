@@ -163,7 +163,7 @@ songArray = [];
 	});
 	setTimeout(function() {
 		$(".messageFeed").html("");
-		for (ixo = 0; ixo < messageArray.length; ixo++) {
+		for (ixo = 0; ixo < geofencedNickname.length; ixo++) {
 			$(".messageFeed").append("<b style='color:#30A793'>"+geofencedNickname[ixo]+"</b> is listening to&nbsp;<a href='"+geofencedSongURL[ixo]+"'>"+geofencedSong[ixo]+"</a> by "+geofencedArtist[ixo]+'. "'+geofencedMessage[ixo]+'"<br>');
 		}
 	}, 1000);
