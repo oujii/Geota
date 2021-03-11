@@ -14,8 +14,8 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '3bf782f8926f49d8be0057855fec5984'; // Your client id
 var client_secret = 'fd34abd6024d48368c880992cdf3723a'; // Your secret
-var redirect_uri = 'https://geotunes.herokuapp.com/callback/'; // Your redirect uri
-// var redirect_uri = 'http://localhost:8888/callback/'; // Your redirect uri
+// var redirect_uri = 'https://geotunes.herokuapp.com/callback/'; // Your redirect uri
+var redirect_uri = 'http://localhost:8888/callback/'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters

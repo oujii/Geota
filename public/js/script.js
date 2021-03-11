@@ -36,21 +36,40 @@ var messageFirebase;
 // Sends what the user wrote to the database on click/enter
 $(".submitButton").click(function() {
 	var userMessage = $(".messageField").val();
-	spotifyGetData(); // Get the latest Spotify data before writing to database
-	setTimeout(function() {
-		console.log(spotifyTrackName);
-		console.log(spotifyURL);
-		console.log(spotifyArtistName);
-		writeDataName(userMessage, userCordsLat, userCordsLong, spotifyTrackName, spotifyArtistName, spotifyURL, spotifyUserId);
+	//var songId = userMessage.substring(31, userMessage.length); //Picking out the track id from the songlink
+	var spotifyCheck = userMessage.substring(0,31);
+	console.log(spotifyCheck);
+	if(spotifyCheck == "https://open.spotify.com/track/") {
+		var songId = userMessage.substring(31, userMessage.length); //Picking out the track id from the songlink
+		console.log("spotifylänk");
+		var number = true;
+		getLink(songId,number);
+		spotifyGetData(); 
+		setTimeout(function() {
+			console.log(spotifyArtistName1);
+			console.log(spotifyTrackName1);
+			var nilsMessage = "Låt";
+			writeDataName(userMessage, userCordsLat, userCordsLong, spotifyTrackName1, spotifyArtistName1, spotifyURL, spotifyUserId);
 
-	}, 2000);
-
+		}, 2000);
+	}
 	// setTimeout(writeDataName(userMessage, userCordsLat, userCordsLong, spotifyTrackName, spotifyArtistName, spotifyURL, spotifyUserId), 1000);
-
-
+	else {
+		console.log("recently played");
+		//var userMessage = $(".messageField").val();
+ 		spotifyGetData(); // Get the latest Spotify data before writing to database
+ 		setTimeout(function() {
+ 			console.log(spotifyTrackName);
+ 			console.log(spotifyURL);
+ 			console.log(spotifyArtistName);
+ 			writeDataName(userMessage, userCordsLat, userCordsLong, spotifyTrackName, spotifyArtistName, spotifyURL, spotifyUserId);
+		}, 2000);
+	}
 	// Writing to Firebase.
 
 	$(".messageForm")[0].reset();
+	//https://open.spotify.com/track/13BVARm5bWjWM2TLyCHDA3
+	//https://open.spotify.com/track/4mhfCJJiCJoe1ZPLjvY7TX
 
 });
 
@@ -70,17 +89,19 @@ $(document).ready(function() {
 		userCordsLat = pos.coords.latitude;
 		userCordsLong = pos.coords.longitude;
 		userCordsCheck = true;
+		console.log("userCordsCheck is: "+userCordsCheck);
 		// $(".loading").css("display", "none");
-		$(".formBox").css("display", "flex");
-		$(".messageParent").css("display", "flex");
-		$(".button.Primary").css("display", "block");
-
+		// $(".formBox").css("display", "flex");
+		// $(".messageParent").css("display", "flex");
+		// $(".button.Primary").css("display", "block");
 		// arrayBuilder();
 
 	  console.log('Your current position is:');
 	  console.log(`Latitude : ${crd.latitude}`);
 	  console.log(`Longitude: ${crd.longitude}`);
 	  console.log(`More or less ${crd.accuracy} meters.`);
+		console.log("Nu kör vi initialize");
+		initialize();
 	}
 
 	function error(err) {
@@ -102,9 +123,7 @@ function mapUpdater(position) {
 	console.log("watchPosition long: "+userCordsLong);
 	// alert("New watchPosition recieved!");
 	arrayBuilder();
-
 	userMarkerLatLng = {lat: userCordsLat, lng: userCordsLong};
-
 }
 // END OF WATCH POSITION
 
@@ -163,8 +182,8 @@ songArray = [];
 	});
 	setTimeout(function() {
 		$(".messageFeed").html("");
-		for (ixo = 0; ixo < geofencedNickname.length; ixo++) {
-			$(".messageFeed").append("<b style='color:#30A793'>"+geofencedNickname[ixo]+"</b> is listening to&nbsp;<a href='"+geofencedSongURL[ixo]+"'>"+geofencedSong[ixo]+"</a> by "+geofencedArtist[ixo]+'. "'+geofencedMessage[ixo]+'"<br>');
+		for (var i = 0; i < geofencedNickname.length; i++) {
+			$(".messageFeed").append("<b style='color:#30A793'>"+geofencedNickname[i]+"</b> is listening to&nbsp;<a href='"+geofencedSongURL[i]+"'>"+geofencedSong[i]+"</a> by "+geofencedArtist[i]+'. "'+geofencedMessage[i]+'"<br>');
 		}
 	}, 1000);
 }
